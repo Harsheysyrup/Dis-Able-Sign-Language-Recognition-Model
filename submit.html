@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dis-able | Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      color: #fff;
+      background: linear-gradient(57deg, #000000, #01c3f9);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 42px 0 70px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 70px;
+    }
+
+    .brand {
+      font-size: 28px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      width: 0;
+      height: 3px;
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      transition: width 0.25s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hero-copy {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .quote {
+      margin-top: 16px;
+      color: #d8fbff;
+      font-size: clamp(18px, 3vw, 30px);
+      font-weight: 700;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .service-card {
+      overflow: hidden;
+      display: flex;
+      min-height: 520px;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(10px);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 34px 85px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 24px;
+    }
+
+    .card-body h2 {
+      font-size: 24px;
+      line-height: 1.15;
+    }
+
+    .card-body p {
+      color: #e7fbff;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .service-button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      border: 2px solid rgba(255, 255, 255, 0.86);
+      border-radius: 50px;
+      color: #06131f;
+      background: #ffffff;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+
+    .service-button:hover {
+      color: #fff;
+      background: #182636;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 960px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 42px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <nav class="topbar">
+      <a class="brand" href="/">dis-able</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="loginpg.html">Login</a>
+      </div>
+    </nav>
+
+    <header class="hero-copy">
+      <h1>Services</h1>
+      <p class="quote">Your Way To Communication</p>
+    </header>
+
+    <section class="services-grid" aria-label="dis-able services">
+      <article class="service-card">
+        <img src="https://images.pexels.com/photos/10029300/pexels-photo-10029300.jpeg" alt="Hand gesture communication">
+        <div class="card-body">
+          <div>
+            <h2>Hand Gesture Mode</h2>
+            <p>Recognize common hand gestures through the webcam and display the detected meaning on screen.</p>
+          </div>
+          <a class="service-button" href="/handGesture">Use Hand Gestures</a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <img src="https://images.pexels.com/photos/3662805/pexels-photo-3662805.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Learning sign language">
+        <div class="card-body">
+          <div>
+            <h2>Sign Converter</h2>
+            <p>Convert sign-language input into readable text using hand landmarks and the trained model.</p>
+          </div>
+          <a class="service-button" href="/tmp">Use Sign Language</a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <img src="https://images.pexels.com/photos/3845126/pexels-photo-3845126.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Healthcare communication">
+        <div class="card-body">
+          <div>
+            <h2>Hospital Signs</h2>
+            <p>Support patient-care communication for needs like help, pain, drink, medicine, and assistance.</p>
+          </div>
+          <a class="service-button" href="/tmp2">Use Hospital Signs</a>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

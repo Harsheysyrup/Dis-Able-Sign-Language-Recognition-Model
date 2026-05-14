@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dis-able | Real-Time Sign Language Translator</title>
+  <link rel="stylesheet" type="text/css" href="homepage.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="/static/js/translator.js"></script>
+</head>
+<body>
+  <header class="site-header" id="home">
+    <nav>
+      <div class="logo">
+        <h1>dis-able</h1>
+      </div>
+      <div class="menu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="submit.html">Services</a></li>
+          <li><a href="#how-it-works">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="loginpg.html">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="hero-section">
+      <div class="leftside">
+        <img src="https://images.pexels.com/photos/10029297/pexels-photo-10029297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Person using sign language">
+      </div>
+      <div class="rightside">
+        <p class="tagline">Two-way accessible communication</p>
+        <h1>Real-Time Sign Language Translator</h1>
+        <p class="description">Break communication barriers using AI, webcam gesture recognition, speech-to-text, and text-to-speech.</p>
+        <div class="mode-actions">
+          <a class="mode-button primary" href="#translator">Start Translating</a>
+          <a class="mode-button secondary" href="https://en.wikipedia.org/wiki/Sign_language">Learn More</a>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="section translator-section" id="translator">
+      <div class="section-heading">
+        <p>Live translator</p>
+        <h2>Sign to text to speech</h2>
+      </div>
+
+      <div class="translator-grid">
+        <div class="camera-card">
+          <div class="camera-toolbar">
+            <span class="live-dot"></span>
+            <span id="cameraStatus">Camera idle</span>
+          </div>
+          <video id="webcam" autoplay muted playsinline></video>
+          <canvas id="captureCanvas" width="640" height="480" aria-hidden="true"></canvas>
+          <div class="control-row">
+            <button class="control-button" id="startCamera">Start Camera</button>
+            <button class="control-button muted" id="stopCamera">Stop Camera</button>
+            <a class="control-button link-button" href="/handGesture">Open Model Stream</a>
+          </div>
+        </div>
+
+        <div class="output-card">
+          <div class="output-grid">
+            <div class="metric-box">
+              <span>Detected Letter</span>
+              <strong id="detectedLetter">-</strong>
+            </div>
+            <div class="metric-box">
+              <span>Confidence</span>
+              <strong id="confidenceValue">0%</strong>
+            </div>
+          </div>
+          <label for="formedWord">Formed Word</label>
+          <input id="formedWord" type="text" value="" placeholder="Letters will form a word">
+          <label for="sentenceOutput">Sentence Output</label>
+          <textarea id="sentenceOutput" rows="5" placeholder="Your translated sentence appears here"></textarea>
+          <div class="control-row">
+            <button class="control-button" id="clearText">Clear Text</button>
+            <button class="control-button accent" id="speakOutput">Speak Output</button>
+          </div>
+          <div class="history-card">
+            <h3>Gesture history</h3>
+            <ul id="gestureHistory"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section assistant-section">
+      <div class="section-heading">
+        <p>Gemini powered</p>
+        <h2>AI Writing Assistant</h2>
+      </div>
+      <div class="assistant-grid">
+        <div class="panel">
+          <label for="assistantInput">Input text</label>
+          <textarea id="assistantInput" rows="6" placeholder="Example: need help hospital"></textarea>
+          <div class="control-row">
+            <button class="control-button" id="improveText">Improve Text</button>
+            <button class="control-button accent" id="generateEmail">Generate Email</button>
+          </div>
+        </div>
+        <div class="panel">
+          <label for="assistantOutput">Enhanced output</label>
+          <textarea id="assistantOutput" rows="8" readonly placeholder="AI-enhanced text appears here"></textarea>
+          <span class="helper-text" id="assistantSource">Gemini is used when GEMINI_API_KEY is configured.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section communication-section">
+      <div class="speech-card">
+        <div class="section-heading compact">
+          <p>Reverse mode</p>
+          <h2>Speech to text</h2>
+        </div>
+        <button class="control-button" id="startListening">Start Listening</button>
+        <span class="helper-text" id="speechStatus">Microphone idle</span>
+        <textarea id="speechText" rows="6" placeholder="Speech transcription appears here"></textarea>
+      </div>
+
+      <div class="speech-card">
+        <div class="section-heading compact">
+          <p>Voice output</p>
+          <h2>Text to speech</h2>
+        </div>
+        <textarea id="ttsInput" rows="6" placeholder="Type text to speak"></textarea>
+        <button class="control-button accent" id="speakCustom">Speak Text</button>
+      </div>
+    </section>
+
+    <section class="section dashboard-section">
+      <div class="section-heading">
+        <p>Analytics</p>
+        <h2>Recognition dashboard</h2>
+      </div>
+      <div class="dashboard-grid">
+        <div class="metric-box large">
+          <span>Detected</span>
+          <strong id="dashboardDetected">-</strong>
+        </div>
+        <div class="metric-box large">
+          <span>Prediction confidence</span>
+          <strong id="dashboardConfidence">0%</strong>
+        </div>
+        <div class="chart-card">
+          <canvas id="gestureChart" height="220"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="section info-section" id="how-it-works">
+      <div class="section-heading">
+        <p>Process</p>
+        <h2>How it works</h2>
+      </div>
+      <div class="flow-grid">
+        <div class="flow-card">Camera</div>
+        <div class="flow-card">CNN Model</div>
+        <div class="flow-card">Prediction</div>
+        <div class="flow-card">Text</div>
+        <div class="flow-card">AI Enhancement</div>
+      </div>
+    </section>
+
+    <section class="section use-section">
+      <div class="section-heading">
+        <p>Use cases</p>
+        <h2>Built for real conversations</h2>
+      </div>
+      <div class="use-grid">
+        <article class="use-card">
+          <h3>Hospitals</h3>
+          <p>Patients can communicate urgent needs like help, pain, medicine, food, or water.</p>
+        </article>
+        <article class="use-card">
+          <h3>Schools</h3>
+          <p>Teachers and students can bridge communication gaps during classroom interaction.</p>
+        </article>
+        <article class="use-card">
+          <h3>Offices</h3>
+          <p>Teams can support accessible workplace communication during daily collaboration.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section demo-section">
+      <div class="section-heading">
+        <p>Demo</p>
+        <h2>Reference video</h2>
+      </div>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/Rd04XB6F0pU" title="Sign language recognition demo" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="section future-section" id="contact">
+      <div class="section-heading">
+        <p>Roadmap</p>
+        <h2>Future scope</h2>
+      </div>
+      <div class="use-grid">
+        <article class="use-card">
+          <h3>Sentence detection</h3>
+          <p>Use LSTM sequence models to detect full signed phrases instead of single signs.</p>
+        </article>
+        <article class="use-card">
+          <h3>Mobile app</h3>
+          <p>Package the translator for Android and iOS camera-first usage.</p>
+        </article>
+        <article class="use-card">
+          <h3>Chrome extension</h3>
+          <p>Bring sign translation overlays into browser-based meetings and tools.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

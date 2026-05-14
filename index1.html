@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dis-able | Hand Gesture Recognition</title>
+    <!-- The live prediction is produced by Flask/OpenCV, so this page only
+         needs to display the MJPEG stream coming from the backend. -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <main class="recognition-shell">
+      <nav class="recognition-nav">
+        <a class="back-link" href="/">Back to modes</a>
+        <a class="alt-link" href="/tmp">Open Sign Converter</a>
+      </nav>
+
+      <header class="page-heading">
+        <p>Simple gesture mode</p>
+        <h1>Hand Gesture Recognition</h1>
+      </header>
+
+      <section class="stream-panel">
+        <div class="video-frame">
+          <img src="{{ url_for('handGesture_video_feed') }}" alt="Live hand gesture recognition stream">
+        </div>
+        <aside class="status-panel">
+          <div>
+            <h2>Live camera feed</h2>
+            <p>The predicted gesture appears directly on the video frame.</p>
+          </div>
+          <div class="tips">
+            <span>Keep one hand clearly visible.</span>
+            <span>Use steady lighting.</span>
+            <span>Close other apps using the camera.</span>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
+      </div>
+      <div class="result-container">
+        <h2>Result:</h2>
+        <p id="result"></p>
+      </div>
+    </div>
+  </body>
+</html>

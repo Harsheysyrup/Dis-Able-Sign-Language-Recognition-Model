@@ -1,0 +1,7 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+server.out.log
+server.err.log
+captured_images/

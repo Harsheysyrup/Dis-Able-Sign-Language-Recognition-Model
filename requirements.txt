@@ -1,0 +1,12 @@
+flask==2.3.3
+numpy==1.23.5
+pandas==1.5.3
+opencv-python==4.8.1.78
+mediapipe==0.10.9
+tensorflow==2.10.1
+keras==2.10.0
+Pillow==10.4.0
+requests==2.32.3
+protobuf==3.20.3
+python-dotenv==1.0.1
+gunicorn==21.2.0

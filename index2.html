@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dis-able | Sign Language Converter</title>
+    <!-- The browser displays a server-generated webcam stream. TensorFlow and
+         MediaPipe run in Python, not in front-end JavaScript. -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <main class="recognition-shell">
+      <nav class="recognition-nav">
+        <a class="back-link" href="/">Back to modes</a>
+        <a class="alt-link" href="/handGesture">Open Hand Gesture</a>
+      </nav>
+
+      <header class="page-heading">
+        <p>Sign converter mode</p>
+        <h1>Sign Language Converter</h1>
+      </header>
+
+      <section class="stream-panel">
+        <div class="video-frame">
+          <img src="{{ url_for('video_feed22') }}" alt="Live sign language converter stream">
+        </div>
+        <aside class="status-panel">
+          <div>
+            <h2>Live camera feed</h2>
+            <p>The model reads MediaPipe hand landmarks and overlays its prediction.</p>
+          </div>
+          <div class="tips">
+            <span>Face your palm toward the camera.</span>
+            <span>Hold each sign for a moment.</span>
+            <span>Use a clean background if possible.</span>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
+      </div>
+      <div class="result-container">
+        <h2>Result:</h2>
+        <p id="result"></p>
+      </div>
+    </div>
+  </body>
+</html>
